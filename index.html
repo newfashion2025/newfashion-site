@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>newfashion2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #222; color: white; text-align: center; padding: 2rem; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 2rem; }
+    .item { width: 300px; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .item img { width: 100%; }
+    .item h3 { margin: 0; padding: 1rem; }
+    .item a { display: block; background: #4CAF50; color: white; padding: 1rem; text-align: center; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>newfashion2025</h1>
+    <p>Styl, który wyróżnia</p>
+    <a href="/admin" style="color: #90ee90;">Panel zarządzania</a>
+  </header>
+  <div class="gallery" id="gallery"></div>
+  <script>
+    fetch('/items.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('gallery');
+        data.items.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <h3>${item.title}</h3>
+            <a href="${item.link}" target="_blank">Zobacz na Vinted</a>
+          `;
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>
