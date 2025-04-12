@@ -1,4 +1,3 @@
-
 backend:
   name: git-gateway
   branch: main
@@ -13,6 +12,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Tytuł", name: "title", widget: "string"}
-      - {label: "Link do Vinted", name: "link", widget: "string"}
-      - {label: "Zdjęcie", name: "image", widget: "image"}
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Link do Vinted", name: "link", widget: "string" }
+      - { label: "Zdjęcie", name: "image", widget: "image" }
